@@ -1,0 +1,50 @@
+.LIB a {
+	color: fff;
+	text-decoration: none;
+}
+		
+.LIB {
+	border: 0px;
+	background: #fff;
+	border-spacing: 6px;
+	padding: 0px;
+	width: 100%;
+}
+
+.LIB_HD {
+	color: #555;
+	border: 0px;
+	background: #eed;
+    padding: 5px;
+	width: 100%;
+	font-weight:bold;
+	font-family:calibri;
+	font-size:24px;
+}
+
+.LIB_TD ,.LIB_TD2 {
+	border: 0px;
+	padding: 0px;
+	
+}
+
+.LIB_TD {width:25%;}
+
+.LIB_TD:hover .Tcap ,.LIB_TD2:hover .Tcap
+{
+	background: #777769;
+}
+
+.Tcap {
+	
+	font-weight:bold;
+	font-family:calibri;
+	font-size:18px;
+	padding: 5px;
+	background: #998;
+}
+
+.Timg {
+	padding: 5px;
+	background: #eed;
+}

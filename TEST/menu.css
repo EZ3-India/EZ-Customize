@@ -1,0 +1,92 @@
+body {
+  font: 14px/20px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+.pg {   
+	font-family: Calibri, sans-serif;
+	font-size: 16px;
+	color: #000000;
+}
+
+.mbutton {   /* menu buttons */
+   height: 50px;
+   border: 0px solid #96d1f8;
+   border-bottom: 1px solid #888;
+   background: #65a9d7;
+   
+   background: -webkit-gradient(linear, left top, left bottom, from(#bfbfbf), to(#ddd));
+   background: -webkit-linear-gradient(top, #bfbfbf, #ddd);
+   background: -moz-linear-gradient(top, #bfbfbf, #ddd);
+   background: -ms-linear-gradient(top, #bfbfbf, #ddd);
+   background: -o-linear-gradient(top, #bfbfbf, #ddd);
+   
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   
+   padding: 7.5px 15px;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #fff;
+   font-size: 18px;
+   font-weight: bold;
+   font-family: Calibri, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.mbutton:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.mbutton:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
+   
+
+
+
+
+#pgMain
+{
+    background-color: #fff;
+    margin: 0px auto;
+    padding: 0px 0px 0px 0px;
+    top: 0px;
+    width: 810px;
+    position: absolute;
+}
+
+#pgLeft
+{
+    background-color: #fff;
+    
+    height: 150px;
+    position: relative;
+    top: 0px;
+    left: -220px;
+    width: 220px;
+}
+
+#pgRight
+{
+    background-color: #fff;
+    height: 150px;
+    position: relative;
+    top: -150px;
+    left: 810px;
+    width: 220px;
+}
+
+
+
+
+
+
+

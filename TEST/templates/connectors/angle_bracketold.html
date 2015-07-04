@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+
+<html>
+<!-- Mirrored from www.3ddoctors.net/templates/connectors/angle_bracketold.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Jul 2015 06:18:38 GMT -->
+<head>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="angle_bracket.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  
+  
+  <style>
+
+body {
+  font: 14px/20px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  margin: 0 auto;
+  padding: 0px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+
+canvas { cursor: move; }
+
+#LIN a:link { color: #000077; }
+#LIN a:visited { color: #000077; }
+#LIN a:hover { color: #0066c7; }
+#LIN a:active { color: #000077; }
+
+#CLO a:link { color: #000000; }
+#CLO a:visited { color: #000000; }
+#CLO a:hover { color: #FFFFFF; }
+#CLO a:active { color: #000000; }
+
+#SAV a:link { color: #006630; }
+#SAV a:visited { color: #006630; }
+#SAV a:hover { color: #009944; }
+#SAV a:active { color: #006630; }
+
+
+ 
+  </style>
+<link rels="stylesheet" href="http://error404.000webhost.com/?" type="text/css">
+
+<script>
+
+var gProcessor=null;
+
+// Show all exceptions to the user:
+OpenJsCad.AlertUserOfUncaughtExceptions();
+
+
+
+function onload()
+{
+  gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+  parametersLoader();
+}
+
+
+
+function updateSolid()
+{
+  gProcessor.setJsCad();
+  
+}
+
+
+function EX(i) {
+  if (i==1) {
+	document.getElementById('thick').value=3;
+	document.getElementById('width').value=40;
+	document.getElementById('rad').value=4;
+	document.getElementById('Alen').value=30;
+	document.getElementById('Blen').value=20;
+	document.getElementById('AholeD').value=3;
+	document.getElementById('BholeD').value=3;
+	document.getElementById('Aholeh').value=24;
+	document.getElementById('Bholeh').value=16;
+	document.getElementById('Aholed').value=20;
+	document.getElementById('Bholed').value=30;
+	document.getElementById('AholeN').value=2;
+	document.getElementById('BholeN').value=2;
+	document.getElementById('withribs').checked=true;
+	document.getElementById('ribsequal').checked=true;
+	document.getElementById('ribThick').value=2;
+	document.getElementById('ribN').value=2;
+	document.getElementById('ribsize').value=70;
+	}
+  if (i==2) {
+	document.getElementById('thick').value=4;
+	document.getElementById('width').value=40;
+	document.getElementById('rad').value=0;
+	document.getElementById('Alen').value=30;
+	document.getElementById('Blen').value=20;
+	document.getElementById('AholeD').value=3;
+	document.getElementById('BholeD').value=8;
+	document.getElementById('Aholeh').value=18;
+	document.getElementById('Bholeh').value=12;
+	document.getElementById('Aholed').value=20;
+	document.getElementById('Bholed').value=30;
+	document.getElementById('AholeN').value=2;
+	document.getElementById('BholeN').value=1;
+	document.getElementById('withribs').checked=true;
+	document.getElementById('ribsequal').checked=false;
+	document.getElementById('ribThick').value=2;
+	document.getElementById('ribN').value=2;
+	document.getElementById('ribsize').value=100;
+	}
+  if (i==3) {
+	document.getElementById('thick').value=3;
+	document.getElementById('width').value=60;
+	document.getElementById('rad').value=5;
+	document.getElementById('Alen').value=30;
+	document.getElementById('Blen').value=20;
+	document.getElementById('AholeD').value=3;
+	document.getElementById('BholeD').value=3;
+	document.getElementById('Aholeh').value=26;
+	document.getElementById('Bholeh').value=16;
+	document.getElementById('Aholed').value=30;
+	document.getElementById('Bholed').value=10;
+	document.getElementById('AholeN').value=2;
+	document.getElementById('BholeN').value=6;
+	document.getElementById('withribs').checked=true;
+	document.getElementById('ribsequal').checked=false;
+	document.getElementById('ribThick').value=2;
+	document.getElementById('ribN').value=7;
+	document.getElementById('ribsize').value=80;
+	}
+  if (i==4) {
+	document.getElementById('thick').value=3;
+	document.getElementById('width').value=8;
+	document.getElementById('rad').value=4;
+	document.getElementById('Alen').value=30;
+	document.getElementById('Blen').value=30;
+	document.getElementById('AholeD').value=3;
+	document.getElementById('BholeD').value=3;
+	document.getElementById('Aholeh').value=26;
+	document.getElementById('Bholeh').value=26;
+	document.getElementById('Aholed').value=20;
+	document.getElementById('Bholed').value=30;
+	document.getElementById('AholeN').value=1;
+	document.getElementById('BholeN').value=1;
+	document.getElementById('withribs').checked=true;
+	document.getElementById('ribsequal').checked=true;
+	document.getElementById('ribThick').value=8;
+	document.getElementById('ribN').value=1;
+	document.getElementById('ribsize').value=80;
+	}
+
+
+
+updateSolid();
+}
+
+</script>
+<title>Angle Bracket Template</title>  
+</head>
+<body onload="onload()">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42895238-2', '3ddoctors.net');
+  ga('send', 'pageview');
+
+</script>
+
+<script src="http://error404.000webhost.com/?" type="Text/javascript"></script>
+
+<table cellspacing=0 cellpadding=0 border=2 bordercolor=ffffff bgcolor=BACCff><td colspan=2 background="../bg1.jpg"><center>
+
+<h1>Angle Bracket</h1>
+<script>HiddenLink();</script>
+</td><tr>
+
+<td width="50%" valign="top">
+
+<div id="viewer"></div>
+</td>
+<td valign=top width="50%">
+
+<table cellspacing=0 cellpadding=0 border=0 bordercolor=ffffff bgcolor=BACCff width="100%">
+	<Td colspan=3 bgcolor=EDD99C background="http://error404.000webhost.com/?"><b>Parameters</b></td>
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<Tr>
+
+	<Td  background="http://error404.000webhost.com/?">Thickness:<span style="float:right;"><input id="thick" value="3" size="2"></span></td>
+	<Td width=2 bgcolor=ffffff></td>
+	<Td  background="http://error404.000webhost.com/?">Width:<span style="float:right;"><input id="width" value="40" size="2"></span></td>
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<Tr>
+
+	<Td background="http://error404.000webhost.com/?">Corner radius: <span style="float:right;"><input id="rad" value="4" size="2"></span></td>
+	<Td width=2 bgcolor=ffffff></td>
+	<Td background="http://error404.000webhost.com/?"></td>
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+
+<Tr>
+	<Td bgcolor=FFBB6A  background="http://error404.000webhost.com/?"><b>Sides:<span style="float:right;">- - A - -</span></td><Td width=2 bgcolor=fffff></td>
+	<Td bgcolor=FFBB6A  background="http://error404.000webhost.com/?"><span style="float:right;"><b>- - B - -</span></td>
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?">Height (1)<span style="float:right;"><input id="Alen" value="30" size="2"></span></td>
+	<Td width=2 bgcolor=ffffff></td>
+	<Td background="http://error404.000webhost.com/?"><span style="float:right;"><input id="Blen" value="20" size="2"></span></td>
+
+<Tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+
+<Tr>
+	<Td background="http://error404.000webhost.com/?">Hole diameter<span style="float:right;"><input id="AholeD" value="3" size="2"></span></td>
+	<Td width=2 bgcolor=ffffff></td>
+	<Td background="http://error404.000webhost.com/?"><span style="float:right;"><input id="BholeD" value="3" size="2"></span></td>
+<Tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?">Location of holes (2)<span style="float:right;"><input id="Aholeh" value="24" size="2"></span></td>
+	<Td width=2 bgcolor=ffffff></td>
+	<Td background="http://error404.000webhost.com/?"><span style="float:right;"><input id="Bholeh" value="16" size="2"></span></td>
+
+<Tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?">Distance between holes (3)<span style="float:right;"><input id="Aholed" value="20" size="2"></span></td>
+	<Td width=2 bgcolor=ffffff></td>
+	<Td background="http://error404.000webhost.com/?"><span style="float:right;"><input id="Bholed" value="30" size="2"></span></td>
+
+
+<Tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?">Number of holes<span style="float:right;"><input id="AholeN" value="2" size="2"></span></td>
+	<Td width=2 bgcolor=fffff></td>
+	<Td background="http://error404.000webhost.com/?"><span style="float:right;"><input id="BholeN" value="2" size="2"></span></td>
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<Tr>
+	<Td colspan=3 bgcolor=FFBB6A  background="http://error404.000webhost.com/?"><b>Ribs:</b></td>
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?"><input type="checkbox" id="withribs" checked>With ribs</td>
+	<Td width=2 bgcolor=fffff></td>
+	<Td background="http://error404.000webhost.com/?"><input type="checkbox" id="ribsequal" checked>Equal ribs (45 angle)</td>
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?">Rib thickness: <span style="float:right;"><input id="ribThick" value="2" size="2"></span></td>
+	<Td width=2 bgcolor=fffff></td>
+	<Td background="http://error404.000webhost.com/?">Number of ribs: <span style="float:right;"><input id="ribN" value="2" size="2"></span></td>
+
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<TR>
+
+	<Td  background="http://error404.000webhost.com/?" colspan=3>Rib size: <input type="range" id="ribsize" min="0" max="100" step="5"></td>
+
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<Tr>
+	<Td colspan=3 valign="bottom"  background="http://error404.000webhost.com/?">
+	<span style="float:right;"><img src="angle_bracket_location.png" height=80 valign=middle></td>
+
+
+
+
+
+</table>
+</td>
+<tr>
+<td colspan=2>
+<b>Examples: (click to edit)</b><br><center>
+
+<a href="#"><img src="angle_bracket1.png" width=190 onclick="EX(1)"></a>
+<a href="#"><img src="angle_bracket2.png" width=190 onclick="EX(2)"></a>
+<a href="#"><img src="angle_bracket3.png" width=190 onclick="EX(3)"></a>
+<a href="#"><img src="angle_bracket4.png" width=190 onclick="EX(4)"></a>
+</td>
+<tr>
+
+</table>
+<script src="http://error404.000webhost.com/?" type="Text/javascript"></script>
+
+</body>
+
+<!-- Mirrored from www.3ddoctors.net/templates/connectors/angle_bracketold.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Jul 2015 06:18:41 GMT -->
+</html>
+
+<!-- Hosting24 Analytics Code -->
+<script type="text/javascript" src="../../../stats.hosting24.com/count.php"></script>
+<!-- End Of Analytics Code -->

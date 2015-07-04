@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+
+<html>
+<!-- Mirrored from www.3ddoctors.net/templates/boxes/starbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Jul 2015 06:18:38 GMT -->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="../../page.js"></script>
+  <script src="../../openJScad/fontjscad.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/opentype.js"></script>
+  <script src="../../openJScad/opentypef.js"></script>
+  <script src="starbox.js"></script>
+  <link rel="stylesheet" type="text/css" href="../template.css">
+  <link rel="stylesheet" type="text/css" href="../../menu.css">
+  
+  
+<script>
+
+var gProcessor=null;
+
+// Show all exceptions to the user:
+OpenJsCad.AlertUserOfUncaughtExceptions();
+
+function onload()
+{
+  drawstar();
+  gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+  UpdateFontList('SelectFont','Latin');
+  UpdateLangList('SelectLang');
+  //renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01);  
+  //LoadFontUpdateSolid('../../openJScad/fonts/arial.ttf',document.getElementById('textField').value,1,0);
+  
+  parametersLoaderText(); 
+  //updateSolid();
+  
+}
+
+function drawstar()
+{
+        if (Number(document.getElementById('NPoints').value<3)) { return 0;}
+	var ctx = document.getElementById('starcanvas').getContext('2d');
+	ctx.clearRect(0,0,100,100);
+	  ctx.fillStyle = "red";
+          var SCAG=STAR(Number(document.getElementById('NPoints').value),40,40*0.01*Number(document.getElementById('SpikeS').value),Number(document.getElementById('outerR').value)*40/Number(document.getElementById('Diam').value),Number(document.getElementById('innerR').value)*40/Number(document.getElementById('Diam').value));
+	  SCAG=SCAG.translate([50,-50]);
+          ctx.beginPath();
+      
+	  for(var i=0;i<SCAG.sides.length;i+=1) {
+		ctx.moveTo(SCAG.sides[i].vertex0.pos.x,-SCAG.sides[i].vertex0.pos.y);
+	  	ctx.lineTo(SCAG.sides[i].vertex1.pos.x,-SCAG.sides[i].vertex1.pos.y);
+		
+          }
+
+          ctx.stroke();
+	  return 0;
+}
+
+function updateSolid()
+{
+  gProcessor.setJsCad();
+}
+
+
+</script>
+<title>Star-Shaped Box & Cover</title>  
+</head>
+<body onload="onload()" class="pg">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42895238-2', '3ddoctors.net');
+  ga('send', 'pageview');
+
+</script>
+<script>OpenScene('template');</script>
+<script>HiddenLink();</script>
+
+<table class="TTT" ><td class="hd" colspan=2><center>
+<h1>Star-Shaped Box & Cover</h1>
+<script>HiddenLink();</script>
+</td><tr>
+
+<td width="50%" valign="top"  class="tableleft">
+
+<div id="viewer"></div>
+</td>
+<td valign=top width="50%"  class="PRMS">
+
+<table cellspacing=0 cellpadding=0 border=0 bordercolor=ffffff bgcolor=BACCff width="100%">
+	<Td colspan=2 bgcolor=EDD99C class="yellow"><b>Star Shape</b></td>
+<tr>
+	<Td colspan=2>Diameter of the circumcircle:<span style="float:right;"><input id="Diam" value="60" size="2"></span></td>
+<tr>
+	
+	<Td rowspan=4><center><table cellspacing=0 cellpadding=0 bordercolor=0 border=1><td bgcolor="ffffff" border=0>
+	<canvas id="starcanvas" width="100" height="100" class="text" style="border:0px solid #000000;"></canvas>
+	</td></table></td>
+    <Td   colspan=1>Star points:<span style="float:right;"><input id="NPoints" value="5" size="2" onchange="drawstar()"></span></td>
+<tr>
+	<Td   colspan=1>Fatness:<span style="float:right;"><input width="50" type="range" id="SpikeS" min="5" max="100" step="2.5" value="50" onchange="drawstar()"></span></td>
+<tr>
+	<Td   colspan=1>Round tip:<span style="float:right;"><input width="50" type="range" id="outerR" min="0" max="1" step="0.1" value="0" onchange="drawstar()"></span></td>
+<tr>
+	<Td  colspan=1>Round base:<span style="float:right;"><input width="50" type="range" id="innerR" min="0" max="1" step="0.1" value="0" onchange="drawstar()"></span></td>
+
+<Tr>
+	<Td colspan=2 bgcolor=EDD99C class="yellow"><b>Box Parameters</b></td>
+<tr>
+	<Td   colspan=2>Minimum wall thickness:<span style="float:right;"><input id="wall" value="2" size="2"></span></td>
+<tr>
+	<Td   colspan=1>Bottom thickness:<span style="float:right;"><input id="bottomZ" value="2" size="2"></span></td>
+	 
+	<Td   colspan=1>Inside height:<span style="float:right;"><input id="insideZ" value="40" size="2"></span></td>
+<tr>
+	<Td   colspan=1>Cover thickness:<span style="float:right;"><input id="coverZ" value="8" size="2"></span></td>
+	 
+	<Td   colspan=1>Cover slot tolerance:<span style="float:right;"><input id="tolerance" value="0.4" size="2"></span></td>
+<tr>
+	<Td colspan=2 bgcolor=EDD99C class="yellow"><b>Text & Font</b></td>
+<Tr>
+	<Td >Text<span style="float:right;"><input type="text" class="text-input" onkeyup="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)" value="3D Text!" id="textField"></span></td>
+	 
+	<Td >Font Size<span style="float:right;"><input id="FontSize" value="15" size="2"></span></td>
+<TR>
+	<TD>Font name: <span style="float:right;"><select style="width: 100px" id="SelectFont" onchange="LoadFont('../../openJScad/fonts/'+document.getElementById('SelectFont').value,document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></select></span></td>
+	 
+	<TD>Charset: <span style="float:right;"><select id="SelectLang" onchange="UpdateFontList('SelectFont',document.getElementById('SelectLang').value)">
+	
+</select></span></td>
+<Tr>
+	<Td  >Italic: <input type="range" id="Fitalic" min="-105" max="105" step="15" value="0" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></td>
+	 
+	<Td  >Narrowing: <input type="range" id="Fnarrowing" min="25" max="175" step="15" value="100" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></td>
+<Tr>
+	<Td   colspan=2>Preview<br><center>
+        <table cellspacing=0 cellpadding=0 bordercolor=0 border=1><td bgcolor="ffffff" border=0>
+	<canvas id="preview" width="390" height="50" class="text" style="border:0px solid #000000;"></canvas>
+	</td></table>
+	</td>
+<Tr>
+	<Td colspan=2>Text height (Z axis)<span style="float:right;"><input id="TextThickness" value="3" size="2"></span></td>
+	
+</table>
+</td>
+<tr class="bt">
+<td colspan=2 >
+<b>Examples: (click to edit)</b><br><center>
+<script>PutExamples("starbox",4,4,190); </script>
+</td>
+
+</table>
+</div></div>
+
+</body>
+
+<!-- Mirrored from www.3ddoctors.net/templates/boxes/starbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Jul 2015 06:18:38 GMT -->
+</html>
+
+<!-- Hosting24 Analytics Code -->
+<script type="text/javascript" src="../../../stats.hosting24.com/count.php"></script>
+<!-- End Of Analytics Code -->

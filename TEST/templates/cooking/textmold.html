@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+
+<html>
+<!-- Mirrored from www.3ddoctors.net/templates/cooking/textmold.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Jul 2015 06:18:41 GMT -->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="../../page.js"></script>
+  <script src="http://error404.000webhost.com/?"></script>
+  <script src="../../openJScad/fontjscad.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/opentype.js"></script>
+  <script src="../../openJScad/opentypef.js"></script>
+  <script src="textmold.js"></script>
+  <link rel="stylesheet" type="text/css" href="../template.css">
+  <link rel="stylesheet" type="text/css" href="../../menu.css">
+  
+<script>
+
+var gProcessor=null;
+
+// Show all exceptions to the user:
+OpenJsCad.AlertUserOfUncaughtExceptions();
+
+function onload()
+{
+  gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+  UpdateFontList('SelectFont','Latin');
+  UpdateLangList('SelectLang');
+  //renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01);  
+  //LoadFontUpdateSolid('../../openJScad/fonts/arial.ttf',document.getElementById('textField').value,1,0);
+
+  
+  parametersLoaderText();
+  
+  
+}
+
+function updateSolid()
+{
+  gProcessor.setJsCad();
+}
+
+function patterndis(isit) {
+  document.getElementById('PatternSize').disabled=isit;
+  document.getElementById('PatternThickness').disabled=isit;
+}
+
+</script>
+<title>Letter-Shaped Cookie Cutter / Mold</title>  
+</head>
+<body onload="onload()" class="pg">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42895238-2', '3ddoctors.net');
+  ga('send', 'pageview');
+
+</script>
+<script>OpenScene('template');</script>
+<script>HiddenLink();</script>
+
+<table class="TTT" ><td class="hd" colspan=2><center>
+
+<h1>Letter-Shaped Cookie Cutter / Mold</h1>
+<script>HiddenLink();</script>
+</td><tr>
+
+<td width="50%" valign="top" class="tableleft">
+
+<div id="viewer"></div>
+</td>
+<td valign=top width="50%" class="PRMS">
+
+<table  class="TTT">
+	<Td colspan=3 bgcolor=EDD99C class="yellow"><b>Text & Font:</b></td>
+
+<Tr>
+	<Td colspan=1>Letter<span style="float:right;"><input type="text"  value="B"  size="2" class="text-input" onkeyup="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)" id="textField"></span></td>
+     
+	<Td colspan=1>Font Size<span style="float:right;"><input id="FontSize" value="80" size="2"></span></td>
+
+
+<TR>
+	<TD>Font name: <span style="float:right;"><select style="width: 100px" id="SelectFont" onchange="LoadFont('../../openJScad/fonts/'+document.getElementById('SelectFont').value,document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></select></span></td>
+	 
+	<TD>Charset:<span style="float:right;"><select id="SelectLang" onchange="UpdateFontList('SelectFont',document.getElementById('SelectLang').value)">
+	
+</select></span></td>
+
+
+<Tr>
+	<Td  background="http://error404.000webhost.com/?">Italic: <input type="range" id="Fitalic" min="-105" max="105" step="15" value="0" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></td>
+	 
+	<Td  background="http://error404.000webhost.com/?">Narrowing: <input type="range" id="Fnarrowing" min="25" max="175" step="15" value="100" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></td>
+
+<Tr>
+	<Td  colspan=3>Preview<br><center>
+        <table cellspacing=0 cellpadding=0 bordercolor=0 border=1><td bgcolor="ffffff" border=0>
+	<canvas id="preview" width="390" height="50" class="text" style="border:0px solid #000000;"></canvas>
+	</td></table>
+	</td>
+
+<Tr>
+	<Td colspan=3><input type="checkbox" checked id="mirror">Mirror the letter</td>
+
+<tr>
+	<Td colspan=3 bgcolor=EDD99C class="yellow"><b>Walls:</b></td>
+
+<tr>
+    <Td  colspan=3>Wall thickness<span style="float:right;"><input id="WallT" value="1.5" size="2"></span></td>
+
+<tr>
+    <Td  colspan=3>Wall height (not including the bottom)<span style="float:right;"><input id="WallH" value="10" size="2"></span></td>
+
+<tr>
+	<Td colspan=3 bgcolor=EDD99C class="yellow"><b>Bottom:</b></td>
+
+<tr>
+    <Td  colspan=3>Bottom thickness<span style="float:right;"><input id="BottomZ" value="1" size="2"></span></td>
+<Tr>
+
+<tr>
+    <Td colspan=3>Bottom made up of lines of width (0 for solid):<span style="float:right;"><input id="linesT" value="3" size="2"></span></td>
+
+<tr>
+    <Td background="http://error404.000webhost.com/?">Gap between lines:<span style="float:right;"><input id="linesS" value="7" size="2"></span></td>
+	 
+	<Td background="http://error404.000webhost.com/?">Angle:<span style="float:right;"><input id="linesA" value="-45" size="2"></span></td>
+
+
+</table>
+</td>
+<tr class="bt">
+<td colspan=2>
+<b>Examples: (click to edit)</b><br><center>
+<script>PutExamples("textmold",4,4,190); </script></center>
+</td>
+
+</table>
+</div></div>
+
+</body>
+
+<!-- Mirrored from www.3ddoctors.net/templates/cooking/textmold.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Jul 2015 06:18:41 GMT -->
+</html>
+
+<!-- Hosting24 Analytics Code -->
+<script type="text/javascript" src="../../../stats.hosting24.com/count.php"></script>
+<!-- End Of Analytics Code -->
