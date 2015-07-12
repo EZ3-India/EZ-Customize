@@ -728,8 +728,8 @@ OpenJsCad.Processor = function(containerdiv, onchange) {
   this.viewerdiv = null;
   this.viewer = null;
   this.zoomControl = null;
-  this.viewerwidth = window.innerWidth*0.7;
-  this.viewerheight = window.innerHeight*0.8;
+  this.viewerwidth = window.innerWidth*0.6;
+  this.viewerheight = window.innerHeight*0.72;
   this.initialViewerDistance = 200;
   this.processing = false;
   this.currentObject = null;
@@ -786,7 +786,7 @@ OpenJsCad.Processor.prototype = {
 
     //.viewerdiv.style.boxShadow=" 4px 4px 8px #BACCff";
     //viewerdiv.style.border= "1px solid #555555";
-    viewerdiv.style.float= "right";
+    // viewerdiv.style.float= "left";
 
 
     this.containerdiv.appendChild(viewerdiv);
