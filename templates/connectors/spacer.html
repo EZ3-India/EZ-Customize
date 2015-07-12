@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="../../page.js"></script>
+  <script src="spacer.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  <link rel="stylesheet" type="text/css" href="../template.css">
+  <link rel="stylesheet" type="text/css" href="../../menu.css">
+  <title>Spacer / Washer / Ring</title>
+<script>
+
+var gProcessor=null;
+
+// Show all exceptions to the user:
+OpenJsCad.AlertUserOfUncaughtExceptions();
+
+function onload()
+{
+  gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+  parametersLoader();
+
+}
+
+function updateSolid()
+{
+
+  gProcessor.setJsCad();
+
+}
+
+</script>
+
+</head>
+<body onload="onload();" class="pg">
+
+<table class="TTT" >
+<td class="hd" colspan=2><center>
+
+<h1>Spacer / Washer / Ring</h1>
+
+</td><tr>
+
+<td width="50%" valign="top" class="tableleft" >
+
+<div id="viewer" ></div>
+</td>
+<td valign=top width="50%" class="PRMS">
+
+<table class="TTT">
+    <Td colspan=2 bgcolor=EDD99C  class="yellow"><b>Parameters:</b></td>
+<Tr>
+	<Td>Inner diameter:<span style="float:right;"><input id="ID" value="3.5" size="2"></span></td>
+    <Td>Outer diameter:<span style="float:right;"><input id="OD" value="10" size="2"></span></td>
+<Tr>
+	<Td colspan=2>Height: <span style="float:right;"><input id="height" value="8" size="2"></span></td>
+<Tr>
+	<Td>Inner-Top chamfer:<span style="float:right;"><input id="ITC" value="1" size="2" ></span></td>
+    <Td>Outer-Top chamfer:<span style="float:right;"><input id="OTC" value="0" size="2" ></span></td>
+<Tr>
+	<Td>Inner-Bottom chamfer:<span style="float:right;"><input id="IBC" value="0.5" size="2"></span></td>
+    <Td>Outer-Bottom chamfer:<span style="float:right;"><input id="OBC" value="0.5" size="2"></span></td>
+<tr>
+	<td colspan=2 style="vertical-align: middle;"><center><img src="spacerA.png" width=300></td>
+
+
+</table>
+</td>
+<tr  class="bt">
+<td colspan=2>
+<b>Examples: (click to edit)</b><br><center>
+<script> PutExamples('spacer',4,4,190); </script>
+
+</td>
+<tr>
+
+</table>
+</div></div>
+
+</body>
+
+</html>

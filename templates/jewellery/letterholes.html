@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="../../page.js"></script>
+  <script src="../../openJScad/fontjscad.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/opentype.js"></script>
+  <script src="../../openJScad/opentypef.js"></script>
+  <script src="letterholes.js"></script>
+  <link rel="stylesheet" type="text/css" href="../template.css">
+  <link rel="stylesheet" type="text/css" href="../../menu.css">
+
+<script>
+
+var gProcessor=null;
+
+// Show all exceptions to the user:
+OpenJsCad.AlertUserOfUncaughtExceptions();
+
+function onload()
+{
+  gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+  UpdateFontList('SelectFont','Latin');
+  UpdateLangList('SelectLang');
+  //renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01);
+  //LoadFontUpdateSolid('../../openJScad/fonts/arial.ttf',document.getElementById('textField').value,1,0);
+
+parametersLoaderText();
+
+
+}
+
+function updateSolid()
+{
+  gProcessor.setJsCad();
+}
+
+function patterndis(isit) {
+  document.getElementById('PatternSize').disabled=isit;
+  document.getElementById('PatternThickness').disabled=isit;
+}
+
+
+</script>
+<title>Holed Letters</title>
+</head>
+<body onload="onload()" class="pg">
+
+<table class="TTT" ><td class="hd" colspan=2><center>
+<h1>Holed Letters</h1>
+
+</td><tr>
+
+<td width="50%" valign="top" class="tableleft">
+
+<div id="viewer"></div>
+</td>
+<td valign=top width="50%" class="PRMS">
+
+<table class="TTT">
+	<Td colspan=2 bgcolor=EDD99C class="yellow"><b>Text & Font:</b></td>
+
+<Tr>
+	<Td  >Text<span style="float:right;"><input type="text" class="text-input" onkeyup="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)" value="KELLY" id="textField"></span></td>
+
+	<Td  >Font Size<span style="float:right;"><input id="FontSize" value="20" size="2"></span></td>
+
+
+<TR>
+	<TD>Font name: <span style="float:right;"><select style="width: 100px" id="SelectFont" onchange="LoadFont('../../openJScad/fonts/'+document.getElementById('SelectFont').value,document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></select></span></td>
+
+	<TD>Charset:<span style="float:right;"><select id="SelectLang" onchange="UpdateFontList('SelectFont',document.getElementById('SelectLang').value)">
+
+</select></span></td>
+
+
+<Tr>
+	<Td   >Italic: <input type="range" id="Fitalic" min="-105" max="105" step="15" value="0" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></td>
+
+	<Td   >Narrowing: <input type="range" id="Fnarrowing" min="25" max="175" step="15" value="100" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></td>
+
+<Tr>
+	<Td    colspan=2>Preview<br><center>
+        <table cellspacing=0 cellpadding=0 bordercolor=0 border=1><td bgcolor="ffffff" border=0>
+	<canvas id="preview" width="390" height="50" class="text" style="border:0px solid #000000;"></canvas>
+	</td></table>
+	</td>
+
+<Tr>
+	<Td  >Text height (Z axis)<span style="float:right;"><input id="TextThickness" value="6" size="2"></span></td>
+
+	<Td  ><input type="checkbox" id="mirror">Mirror text</td>
+
+<tr>
+	<Td colspan=2 bgcolor=EDD99C class="yellow"><b>Hole</b></td>
+
+<tr>
+	<Td   colspan=2>Hole diameter<span style="float:right;"><input id="holed" value="2.5" size="2"></span></td>
+
+<Tr>
+	<Td   colspan=2>Distance between hole center & top of the text<span style="float:right;"><input id="holel" value="4" size="2"></span></td>
+<tr><td colspan=2></td>
+
+
+</table>
+</td>
+<tr class="bt">
+<td colspan=2>
+<b>Examples: (click to edit)</b><br><center>
+<script>PutExamples("letterholes",4,4,190); </script></center>
+</td>
+
+
+</table>
+
+</div></div>
+
+</body>
+
+</html>

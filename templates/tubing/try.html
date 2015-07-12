@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+
+
+  <style>
+
+body {
+  font: 14px/20px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+textarea {
+  width: 780px;
+  height: 200px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+canvas { cursor: move; }
+
+  </style>
+<link rels="stylesheet" href="http://error404.000webhost.com/?" type="text/css">
+
+<script>
+
+var gProcessor=null;
+var PartCag = new CSG();
+
+
+// Show all exceptions to the user:
+OpenJsCad.AlertUserOfUncaughtExceptions();
+
+function main()
+{
+
+
+  return [
+    { name: "CAG", caption: "CAG", data: PartCag }
+   	];
+}
+
+function onload()
+{
+
+  gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+  updateSolid();
+}
+
+function updateSolid()
+{
+  gProcessor.setJsCad();
+}
+
+function funcADD()
+{
+	var cx=document.getElementById('CX').value;
+	var cy=document.getElementById('CY').value;
+	var cz=document.getElementById('CZ').value;
+	PartCag=PartCag.union(new CSG.cube({center: [cx-0.5, cy-0.5, cz-0.5],radius: [0.5, 0.5, 0.5]}));
+	updateSolid();
+}
+function funcSUB()
+{
+	var cx=document.getElementById('CX').value;
+	var cy=document.getElementById('CY').value;
+	var cz=document.getElementById('CZ').value;
+	PartCag=PartCag.subtract(new CSG.cube({center: [cx-0.5, cy-0.5, cz-0.5],radius: [0.5, 0.5, 0.5]}));
+	updateSolid();
+}
+
+function EX(i) {
+  if (i==1) {
+	document.getElementById('thick').value=3;
+	document.getElementById('width').value=40;
+	document.getElementById('rad').value=4;
+	document.getElementById('Alen').value=30;
+	document.getElementById('Blen').value=20;
+	document.getElementById('AholeD').value=3;
+	document.getElementById('BholeD').value=3;
+	document.getElementById('Aholeh').value=24;
+	document.getElementById('Bholeh').value=16;
+	document.getElementById('Aholed').value=20;
+	document.getElementById('Bholed').value=30;
+	document.getElementById('AholeN').value=2;
+	document.getElementById('BholeN').value=2;
+	document.getElementById('withribs').checked=true;
+	document.getElementById('ribsequal').checked=true;
+	document.getElementById('ribThick').value=2;
+	document.getElementById('ribN').value=2;
+	document.getElementById('ribsize').value=70;
+	}
+
+
+
+updateSolid();
+}
+
+
+
+</script>
+<title>Build Your Own Part By Pixels</title>
+</head>
+<body onload="onload()">
+<script src="http://error404.000webhost.com/?" type="Text/javascript"></script>
+
+<table cellspacing=0 cellpadding=0 border=2 bordercolor=ffffff bgcolor=BACCff><td colspan=2 background="../bg1.jpg"><center>
+
+<h1>Build Your Own Part By Pixels</h1>
+</td><tr>
+
+<td width="50%" valign="top">
+
+<div id="viewer"></div>
+</td>
+<td valign=top width="50%">
+
+<table cellspacing=0 cellpadding=0 border=0 bordercolor=ffffff bgcolor=BACCff width="100%">
+	<Td colspan=3 bgcolor=EDD99C background="http://error404.000webhost.com/?"><b>Cubes:</b></td>
+<Tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?" colspan=3>Coordinates:
+	(<input id="CX" value="1" size="2">,<input id="CY" value="1" size="2">,<input id="CZ" value="1" size="2">)
+
+
+	</td>
+<Tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?" colspan=3>
+	<button type="button" onclick="funcADD()">Add</button>
+	<button type="button" onclick="funcSUB()">Remove</button>
+	</td>
+
+
+
+</table>
+</td>
+<tr>
+<td colspan=2>
+<b>Examples: (click to edit)</b><br><center>
+
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(1)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(2)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(3)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(4)"></a>
+</td>
+<tr>
+
+</table>
+
+
+</body>
+
+</html>

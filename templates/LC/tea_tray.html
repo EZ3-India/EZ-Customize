@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="../../page.js"></script>
+  <script src="tea_tray.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  <link rel="stylesheet" type="text/css" href="../template.css">
+  <link rel="stylesheet" type="text/css" href="../../menu.css">
+
+<script>
+
+var gProcessor=null;
+
+// Show all exceptions to the user:
+OpenJsCad.AlertUserOfUncaughtExceptions();
+
+function onload()
+{
+  gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+  updateSolid();
+}
+
+function updateSolid()
+{
+  gProcessor.setJsCad();
+}
+
+</script>
+<title>Box with lid</title>
+</head>
+<body onload="onload()"  class="pg">
+
+<script>OpenScene('template');</script>
+<script>HiddenLink();</script>
+
+<table class="TTT" ><td class="hd" colspan=2><center>
+<h1>Parametric tea tray</h1>
+
+</td><tr>
+
+<td width="50%" valign="top" class="tableleft">
+
+<div id="viewer"></div>
+</td>
+<td valign=top width="50%" class="PRMS">
+
+<table class="TTT" cellspacing=0><!--  Parameter Table -->
+	<Td colspan=2 class="yellow"><b>Parameters:</b></td>
+<TR>
+	<Td colspan=2>Diameter:<span style="float:right;"><input id="sizeR" value="150" size="2"></span></td>
+<tr>
+	<Td colspan=2>Height:<span style="float:right;"><input id="sizeH" value="200" size="2"></span></td>
+<tr>
+    <Td colspan=2>Material Thickness:<span style="float:right;"><input id="sizeT" value="4" size="2"></span></td>
+
+</table>
+</td>
+<tr  class="bt">
+<td colspan=2>
+<b>Examples: (click to edit)</b><br><center>
+</td>
+
+</table>
+
+
+</body>
+
+</html>
+
+<!-- Hosting24 Analytics Code -->
+<script type="text/javascript" src="../../../stats.hosting24.com/count.php"></script>
+<!-- End Of Analytics Code -->

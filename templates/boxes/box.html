@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="box.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+
+   <style>
+
+body {
+  font: 14px/20px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  margin: 0 auto;
+  padding: 0px;
+}
+
+textarea {
+  width: 780px;
+  height: 200px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+canvas { cursor: move; }
+
+  </style>
+
+<link rels="stylesheet" href="http://error404.000webhost.com/?" type="text/css">
+
+<script>
+
+var gProcessor=null;
+
+// Show all exceptions to the user:
+OpenJsCad.AlertUserOfUncaughtExceptions();
+
+function onload()
+{
+  gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+  updateSolid();
+}
+
+function updateSolid()
+{
+  gProcessor.setJsCad();
+}
+
+</script>
+<title>Box with lid</title>
+</head>
+<body onload="onload()">
+
+<table cellspacing=0 cellpadding=0 border=2 bordercolor=ffffff bgcolor=BACCff><td colspan=2 background="../bg1.jpg"><center>
+
+<h1>Box with lid for laser cutter</h1>
+</td><tr>
+
+<td width="50%" valign="top">
+
+<div id="viewer"></div>
+</td>
+<td valign=top width="50%">
+
+<table cellspacing=0 cellpadding=0 border=0 bordercolor=ffffff bgcolor=BACCff width="100%">
+	<Td colspan=3 bgcolor=6ABBff background="http://error404.000webhost.com/?"><b>Parameters:</b></td>
+<Tr>
+
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<TR>
+	<Td colspan=3>Width:<span style="float:right;"><input id="sizeW" value="120" size="2"></span></td><tr>
+	<Td colspan=3>Depth:<span style="float:right;"><input id="sizeD" value="70" size="2"></span></td><tr>
+	<Td colspan=3>Height:<span style="float:right;"><input id="sizeH" value="40" size="2"></span></td><tr>
+  <Td colspan=3>Material Thickness:<span style="float:right;"><input id="sizeT" value="3" size="2"></span></td><tr>
+
+
+
+</table>
+</td>
+<tr>
+<td colspan=2>
+<b>Examples: (click to edit)</b><br><center>
+
+
+</td>
+<tr>
+
+</table>
+
+
+</body>
+
+</html>
+
+<!-- Hosting24 Analytics Code -->
+<script type="text/javascript" src="../../../stats.hosting24.com/count.php"></script>
+<!-- End Of Analytics Code -->

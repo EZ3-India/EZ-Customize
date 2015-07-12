@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="http://error404.000webhost.com/?"></script>
+  <script src="../../openJScad/fontjscad.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/opentype.js"></script>
+  <script src="../../openJScad/opentypef.js"></script>
+  <script src="textring.js"></script>
+
+
+
+  <style>
+
+body {
+  font: 14px/20px 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  margin: 0 auto;
+  padding: 0px;
+}
+
+textarea {
+  width: 780px;
+  height: 200px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+
+
+  </style>
+<link rels="stylesheet" href="http://error404.000webhost.com/?" type="text/css">
+
+<script>
+
+var gProcessor=null;
+
+// Show all exceptions to the user:
+OpenJsCad.AlertUserOfUncaughtExceptions();
+
+function onload()
+{
+  gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+  UpdateFontList('SelectFont','Latin');
+  UpdateLangList('SelectLang');
+  renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01);
+  LoadFontUpdateSolid('../../openJScad/fonts/arial.ttf',document.getElementById('textField').value,1,0);
+
+
+  //EX(1);
+
+
+}
+
+function updateSolid()
+{
+  gProcessor.setJsCad();
+}
+
+function patterndis(isit) {
+  document.getElementById('PatternSize').disabled=isit;
+  document.getElementById('PatternThickness').disabled=isit;
+}
+
+function EX(i) {
+  if (i==1) {
+
+	document.getElementById('textField').value="3D Text";
+	document.getElementById('SelectLang').value='Latin'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='Arial.js';LoadFontFile(document.getElementById('SelectFont').value);
+	document.getElementById('FontSize').value=20;
+	document.getElementById('TextThickness').value=6;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=3;
+	document.getElementById('SelectP').value='Solid';
+	document.getElementById('PatternSize').value=5;
+	document.getElementById('PatternThickness').value=1;
+	document.getElementById('LeftMargin').value=10;
+	document.getElementById('RightMargin').value=10;
+	document.getElementById('TopBottomMargin').value=3;
+	document.getElementById('FrameThickness').value=6;
+	document.getElementById('FrameWidth').value=2;
+	document.getElementById('Fillet').value=6;
+
+	}
+if (i==2) {
+
+	document.getElementById('textField').value="A";
+	document.getElementById('SelectLang').value='Latin'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='georgia.js';LoadFontFile(document.getElementById('SelectFont').value);
+	document.getElementById('FontSize').value=20;
+	document.getElementById('TextThickness').value=6;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=3;
+	document.getElementById('SelectP').value='Solid';
+	document.getElementById('PatternSize').value=5;
+	document.getElementById('PatternThickness').value=1;
+	document.getElementById('LeftMargin').value=3;
+	document.getElementById('RightMargin').value=3;
+	document.getElementById('TopBottomMargin').value=3;
+	document.getElementById('FrameThickness').value=6;
+	document.getElementById('FrameWidth').value=2;
+	document.getElementById('Fillet').value=6;
+
+	}
+if (i==3) {
+
+	document.getElementById('textField').value="B";
+	document.getElementById('SelectLang').value='Latin'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='georgia.js';LoadFontFile(document.getElementById('SelectFont').value);
+	document.getElementById('FontSize').value=20;
+	document.getElementById('TextThickness').value=27;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=25;
+	document.getElementById('SelectP').value='Solid';
+	document.getElementById('PatternSize').value=5;
+	document.getElementById('PatternThickness').value=1;
+	document.getElementById('LeftMargin').value=3;
+	document.getElementById('RightMargin').value=3;
+	document.getElementById('TopBottomMargin').value=3;
+	document.getElementById('FrameThickness').value=24;
+	document.getElementById('FrameWidth').value=1;
+	document.getElementById('Fillet').value=6;
+
+	}
+
+if (i==4) {
+	document.getElementById('textField').value=String.fromCharCode(1488);
+	document.getElementById('SelectLang').value='Hebrew'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='David_Bold.js';LoadFontFile(document.getElementById('SelectFont').value);
+	document.getElementById('FontSize').value=40;
+	document.getElementById('TextThickness').value=8;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=4;
+	document.getElementById('SelectP').value='Solid';
+	document.getElementById('PatternSize').value=5;
+	document.getElementById('PatternThickness').value=1;
+	document.getElementById('LeftMargin').value=3;
+	document.getElementById('RightMargin').value=3;
+	document.getElementById('TopBottomMargin').value=3;
+	document.getElementById('FrameThickness').value=2;
+	document.getElementById('FrameWidth').value=1;
+	document.getElementById('Fillet').value=6;
+	}
+
+if (i==5) {
+	document.getElementById('textField').value="ABCD";
+	document.getElementById('SelectLang').value='Latin'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='calibri.js';LoadFontFile(document.getElementById('SelectFont').value);
+	document.getElementById('FontSize').value=30;
+	document.getElementById('TextThickness').value=6;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=0;
+	document.getElementById('SelectP').value='Solid';
+	document.getElementById('PatternSize').value=5;
+	document.getElementById('PatternThickness').value=1;
+	document.getElementById('LeftMargin').value=10;
+	document.getElementById('RightMargin').value=10;
+	document.getElementById('TopBottomMargin').value=3;
+	document.getElementById('FrameThickness').value=0;
+	document.getElementById('FrameWidth').value=2;
+	document.getElementById('Fillet').value=6;
+	}
+
+if (i==6) {
+	document.getElementById('textField').value="MOLDS";
+	document.getElementById('SelectLang').value='Latin'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='Arial.js';LoadFontFile(document.getElementById('SelectFont').value);
+	document.getElementById('FontSize').value=20;
+	document.getElementById('TextThickness').value=2;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=8;
+	document.getElementById('SelectP').value='Solid';
+	document.getElementById('PatternSize').value=5;
+	document.getElementById('PatternThickness').value=1;
+	document.getElementById('LeftMargin').value=10;
+	document.getElementById('RightMargin').value=10;
+	document.getElementById('TopBottomMargin').value=3;
+	document.getElementById('FrameThickness').value=6;
+	document.getElementById('FrameWidth').value=0;
+	document.getElementById('Fillet').value=6;
+	}
+if (i==7) {
+	document.getElementById('textField').value="3D TEXT";
+	document.getElementById('SelectLang').value='Latin'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='HVD_Comic_Serif_Pro.js';LoadFontFile(document.getElementById('SelectFont').value);
+	document.getElementById('FontSize').value=20;
+	document.getElementById('TextThickness').value=6;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=3;
+	document.getElementById('SelectP').value='Squares45';
+	document.getElementById('PatternSize').value=4;
+	document.getElementById('PatternThickness').value=0.5;
+	document.getElementById('LeftMargin').value=10;
+	document.getElementById('RightMargin').value=10;
+	document.getElementById('TopBottomMargin').value=3;
+	document.getElementById('FrameThickness').value=3;
+	document.getElementById('FrameWidth').value=2;
+	document.getElementById('Fillet').value=30;
+	}
+
+if (i==8) {
+	document.getElementById('textField').value="3D TEXT";
+	document.getElementById('SelectLang').value='Latin'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='Komika_Axis.js';LoadFontFile(document.getElementById('SelectFont').value);
+	document.getElementById('FontSize').value=20;
+	document.getElementById('TextThickness').value=6;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=3;
+	document.getElementById('SelectP').value='Squares';
+	document.getElementById('PatternSize').value=4;
+	document.getElementById('PatternThickness').value=0.5;
+	document.getElementById('LeftMargin').value=10;
+	document.getElementById('RightMargin').value=10;
+	document.getElementById('TopBottomMargin').value=3;
+	document.getElementById('FrameThickness').value=6;
+	document.getElementById('FrameWidth').value=2;
+	document.getElementById('Fillet').value=2;
+	}
+
+if (i==9) {
+	document.getElementById('textField').value="HONEY";
+	document.getElementById('SelectLang').value='Latin'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='Comic.js';LoadFontFile(document.getElementById('SelectFont').value)
+	document.getElementById('FontSize').value=20;
+	document.getElementById('TextThickness').value=4;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=3;
+	document.getElementById('SelectP').value='Honeycomb';
+	document.getElementById('PatternSize').value=4;
+	document.getElementById('PatternThickness').value=0.5;
+	document.getElementById('LeftMargin').value=10;
+	document.getElementById('RightMargin').value=10;
+	document.getElementById('TopBottomMargin').value=12;
+	document.getElementById('FrameThickness').value=6;
+	document.getElementById('FrameWidth').value=2;
+	document.getElementById('Fillet').value=50;
+	}
+if (i==10) {
+	document.getElementById('textField').value="LOOK";
+	document.getElementById('SelectLang').value='Latin'; UpdateFontList('SelectFont',document.getElementById('SelectLang').value);
+	//document.getElementById('SelectFont').value='Comic.js'; LoadFontFile(document.getElementById('SelectFont').value);
+	document.getElementById('FontSize').value=40;
+	document.getElementById('TextThickness').value=0;
+	document.getElementById('Fnarrowing').value=100;
+	document.getElementById('BGThickness').value=8;
+	document.getElementById('SelectP').value='Solid';
+	document.getElementById('PatternSize').value=5;
+	document.getElementById('PatternThickness').value=1;
+	document.getElementById('LeftMargin').value=3;
+	document.getElementById('RightMargin').value=3;
+	document.getElementById('TopBottomMargin').value=3;
+	document.getElementById('FrameThickness').value=0;
+	document.getElementById('FrameWidth').value=1;
+	document.getElementById('Fillet').value=6;
+	}
+
+patterndis(document.getElementById('SelectP').value=='Solid');
+updateSolid();
+}
+
+</script>
+<title>Holed Letters</title>
+</head>
+<body onload="onload()">
+
+
+
+<table cellspacing=0 cellpadding=0 border=2 bordercolor=ffffff bgcolor=BACCff><td colspan=2 background="../bg1.jpg"><center>
+
+<h1>Holed Letters</h1>
+</td><tr>
+
+<td width="50%" valign="top">
+
+<div id="viewer"></div>
+</td>
+<td valign=top width="50%">
+
+<table cellspacing=0 cellpadding=0 border=0 bordercolor=ffffff bgcolor=BACCff width="100%">
+	<Td colspan=3 bgcolor=EDD99C background="http://error404.000webhost.com/?"><b>Text & Font:</b></td>
+<Tr>
+	<Td colspan=3 bgcolor=ffffff height=2></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?">Text<span style="float:right;"><input type="text" class="text-input" onkeyup="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)" value="KELLY" id="textField"></span></td>
+	<Td bgcolor=ffffff width=2></td>
+	<Td background="http://error404.000webhost.com/?">Font Size<span style="float:right;"><input id="FontSize" value="20" size="2"></span></td>
+<Tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+
+<TR>
+	<TD>Font name: <span style="float:right;"><select style="width: 100px" id="SelectFont" onchange="LoadFont('../../openJScad/fonts/'+document.getElementById('SelectFont').value,document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></select></span></td>
+	<Td bgcolor=ffffff width=2></td>
+	<TD>Chatset:<span style="float:right;"><select id="SelectLang" onchange="UpdateFontList('SelectFont',document.getElementById('SelectLang').value)">
+
+</select></span></td>
+
+<Tr>
+
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<Tr>
+	<Td  background="http://error404.000webhost.com/?">Italic: <input type="range" id="Fitalic" min="-105" max="105" step="15" value="0" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></td>
+	<Td bgcolor=ffffff width=2></td>
+	<Td  background="http://error404.000webhost.com/?">Narrowing: <input type="range" id="Fnarrowing" min="25" max="175" step="15" value="100" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></td>
+<Tr>
+
+
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<Tr>
+	<Td  background="http://error404.000webhost.com/?" colspan=3>Preview<br><center>
+        <table cellspacing=0 cellpadding=0 bordercolor=0 border=1><td bgcolor="ffffff" border=0>
+	<canvas id="preview" width="390" height="50" class="text" style="border:0px solid #000000;"></canvas>
+	</td></table>
+	</td>
+<tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?">Text height (Z axis)<span style="float:right;"><input id="TextThickness" value="6" size="2"></span></td>
+	<Td bgcolor=ffffff width=2></td>
+	<Td background="http://error404.000webhost.com/?"><input type="checkbox" id="mirror">Mirror text</td>
+<Tr>
+
+
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<tr>
+	<Td colspan=3 bgcolor=EDD99C background="http://error404.000webhost.com/?"><b>Hole</b></td>
+<tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<tr>
+	<Td background="http://error404.000webhost.com/?" colspan=3>Hole diameter<span style="float:right;"><input id="holed" value="2.5" size="2"></span></td>
+
+<Tr>
+	<Td bgcolor=ffffff height=2 colspan=3></td>
+<Tr>
+	<Td background="http://error404.000webhost.com/?" colspan=3>Distance between hole center & top of the text<span style="float:right;"><input id="holel" value="4" size="2"></span></td>
+
+
+
+</table>
+</td>
+<tr>
+<td colspan=2>
+<b>Examples: (click to edit)</b><br><center>
+
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(1)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=95 onclick="EX(2)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=95 onclick="EX(3)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(7)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(8)"></a>
+<br>
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(6)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=95 onclick="EX(4)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=95 onclick="EX(5)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(9)"></a>
+<a href="#"><img src="http://error404.000webhost.com/?" width=190 onclick="EX(10)"></a>
+</td>
+<tr>
+
+</table>
+<script src="http://error404.000webhost.com/?" type="Text/javascript"></script>
+
+</body>
+
+</html>
