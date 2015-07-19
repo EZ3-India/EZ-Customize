@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="../../page.js"></script>
+  <script src="../../openJScad/fontjscad.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/opentype.js"></script>
+  <script src="../../openJScad/opentypef.js"></script>
+  <script src="pyramidtext.js"></script>
+  <link rel="stylesheet" type="text/css" href="../template.css">
+  <link rel="stylesheet" type="text/css" href="../../menu.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="../../assets/js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+  <link href="../../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="../table.css">
+
+
+
+  <script>
+    var gProcessor = null;
+
+    // Show all exceptions to the user:
+    OpenJsCad.AlertUserOfUncaughtExceptions();
+
+    function onload() {
+
+
+      gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+      UpdateFontList('SelectFont', 'Latin');
+      UpdateLangList('SelectLang');
+      //renderText(document.getElementById('textField').value.replace(/(\r\n|\n|\r)/gm,'|'),document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01);
+      //LoadFontUpdateSolid('../../openJScad/fonts/arial.ttf',document.getElementById('textField').value.replace(/(\r\n|\n|\r)/gm,'|'),1,0);
+
+      parametersLoaderText();
+
+    }
+
+    function updateSolid() {
+      gProcessor.setJsCad();
+    }
+
+    function patterndis(isit) {
+      document.getElementById('PatternSize').disabled = isit;
+      document.getElementById('PatternThickness').disabled = isit;
+    }
+  </script>
+  <title>EZ-Customize</title>
+  <div id="header" style="position:relative;">
+
+</head>
+
+<body onload="onload()" class="pg">
+  <div class="section">
+    <div class="container" style="margin-left: 10px;width: 100%;">
+      <div class="row">
+
+        <div class="col-md-4" style="float:left;">
+
+          <!-- table here -->
+          <table>
+
+            <Th colspan=2><b>Pyramid Configuration</b></th>
+
+            <tr>
+              <Td>Base edge
+                <span style="float:right;">
+                  <input id="BaseE" value="50" size="2">
+                </span>
+              </td>
+              <Td>Angle
+                <span style="float:right;">
+                  <input id="Angle" value="60" size="2">
+                </span>
+              </td>
+
+              <Tr>
+                <Td>Thickness
+                  <span style="float:right;">
+                    <input id="Thickness" value="1" size="2">
+                  </span>
+                </td>
+                <Td>Hole Edge
+                  <span style="float:right;">
+                    <input id="HoleE" value="5" size="2">
+                  </span>
+                </td>
+
+                <tr>
+                  <Th colspan=2><b>Text:</b></th>
+
+                  <Tr>
+
+                    <Td colspan=2>
+                      <table id="GRID" border=0 cellspacing=0 cellpadding=0 width="100%">
+                        <td>
+                          <center>Side A
+                            <br>
+                            <textarea rows="4" cols="8" id="textField" onkeyup="renderText(document.getElementById('textField').value.replace(/(\r\n|\n|\r)/gm,'|'),document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)">E</textarea>
+                        </td>
+                        <td>
+                          <center>Side B
+                            <br>
+                            <textarea rows="4" cols="8" id="textB">Z</textarea>
+                        </td>
+                        <td>
+                          <center>Side C
+                            <br>
+                            <textarea rows="4" cols="8" id="textC">3</textarea>
+                        </td>
+                        <td>
+                          <center>Side D
+                            <br>
+                            <textarea rows="4" cols="8" id="textD">I</textarea>
+                        </td>
+                      </table>
+
+                    </td>
+
+                    <Tr>
+                      <Td colspan=2>Space between lines
+                        <span style="float:right;">
+                          <input type="range" id="LineC" min="80" max="200" step="10" value="120">
+                        </span>
+                      </td>
+
+                      <tr>
+                        <Td colspan=2>
+                          <input type="checkbox" id="Equal">Equal font size on all sides</td>
+
+                        <Tr>
+                          <Td>Bottom margin
+                            <span style="float:right;">
+                              <input size="2" type="text" class="text-input" value="2" id="BottomMargin">
+                            </span>
+                          </td>
+
+                          <Td>Sides margin
+                            <span style="float:right;">
+                              <input size="2" type="text" class="text-input" value="2" id="SideMargin">
+                            </span>
+                          </td>
+
+                          <tr>
+                            <Th colspan=2><b>Font:</b></th>
+
+
+                            <TR>
+                              <TD>Font name:
+                                <span style="float:right;">
+                                  <select style="width: 100px" id="SelectFont" onchange="LoadFont('../../openJScad/fonts/'+document.getElementById('SelectFont').value,document.getElementById('textField').value.replace(/(\r\n|\n|\r)/gm,'|'),document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></select>
+                                </span>
+                              </td>
+
+                              <TD>Charset:
+                                <span style="float:right;">
+                                  <select id="SelectLang" onchange="UpdateFontList('SelectFont',document.getElementById('SelectLang').value)">
+
+                                  </select>
+                                </span>
+                              </td>
+
+                              <Tr>
+                                <Td>Italic:
+                                  <span style="float:right;">
+                                  <input type="range" id="Fitalic" min="-105" max="105" step="15" value="0" onchange="renderText(document.getElementById('textField').value.replace(/(\r\n|\n|\r)/gm,'|'),document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)">
+                                </span>
+                                </td>
+
+                                <Td>Narrowing:
+
+                                    <span style="float:right;">
+                                  <input type="range" id="Fnarrowing" min="25" max="175" step="15" value="100" onchange="renderText(document.getElementById('textField').value.replace(/(\r\n|\n|\r)/gm,'|'),document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)">
+                                </span>
+                                </td>
+
+                                <Tr>
+                                  <Td colspan=2>Text preview (side A)
+                                    <br>
+                                    <center>
+                                      <table cellspacing=0 cellpadding=0 bordercolor=0 border=1>
+                                        <td bgcolor="ffffff" border=0>
+                                          <canvas id="preview" width="390" height="50" class="text" style="border:0px solid #000000;"></canvas>
+                                        </td>
+                                      </table>
+                                  </td>
+
+                                  <Tr>
+                                    <Td>Text thickness (stick out)
+                                      <span style="float:right;">
+                                        <input id="TextThickness" value="3" size="2">
+                                      </span>
+                                    </td>
+
+                                    <Td>
+                                      <input type="checkbox" id="mirror">Mirror text</td>
+
+
+
+          </table>
+          </td>
+
+
+          </table>
+
+        </div>
+        <div class="col-md-8">
+
+          <div id="viewer"></div>
+        </div>
+
+
+      </div>
+
+</body>
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+</html>

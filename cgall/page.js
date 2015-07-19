@@ -6,7 +6,7 @@ document.write('<link rel="icon" type="image/png" href="../../icons/3dd.png">');
 function OpenScene(typ) {
   document.write('<div id="MenuBG"></div><div id="topWrapper">');
   document.write('<div id="topMain">');
-  //menuline();
+  menuline();
  // document.write('<span style="float:right;"><a href="javascript:showpopup()"><img src="..\/icons\/share.png" height=30></a></span>');
 
 

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="../../page.js"></script>
+  <script src="../../openJScad/fontjscad.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/opentype.js"></script>
+  <script src="../../openJScad/opentypef.js"></script>
+  <script src="textsign.js"></script>
+  <link rel="stylesheet" type="text/css" href="../template.css">
+  <link rel="stylesheet" type="text/css" href="../../menu.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="../../assets/js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+  <link href="../../assets/css/font-awesome.min.css"
+  rel="stylesheet" type="text/css">
+  <link href="../../assets/css/bootstrap.css"
+  rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="../table.css">
+
+
+  <script>
+    var gProcessor = null;
+
+    // Show all exceptions to the user:
+    OpenJsCad.AlertUserOfUncaughtExceptions();
+
+    function onload() {
+      gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+      UpdateFontList('SelectFont', 'Latin');
+      UpdateLangList('SelectLang');
+
+
+      ////renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01);
+      ////LoadFontUpdateSolid('../../openJScad/fonts/arial.ttf',document.getElementById('textField').value,1,0);
+
+      parametersLoaderText();
+
+    }
+
+    function onresize() {
+      var canvas = document.getElementById('viewer');
+      canvas.style.width = this.viewerwidth + "px";
+      canvas.style.height = this.viewerheight + "px";
+    }
+
+    function updateSolid() {
+      gProcessor.setJsCad();
+    }
+
+    function patterndis(isit) {
+      document.getElementById('PatternSize').disabled = isit;
+      document.getElementById('PatternThickness').disabled = isit;
+    }
+  </script>
+
+  <title>EZ-Customize</title>
+
+  <div id="header" style="position:relative;">
+
+  </div>
+
+</head>
+
+
+
+<body onload="onload()" class="pg" style="background-color: #333A3C;">
+  <div class="section">
+    <div class="container" style="margin-left: 10px;width: 100%;">
+      <div class="row">
+
+        <div class="col-md-4" style="float:left;">
+
+          <table>
+            <thead>
+              <tr>
+                <th colspan=2><b>Text & Font:</b>
+                </th>
+              </tr>
+            </thead>
+
+            <Tr>
+              <Td>Text
+                <span style="float:right;">
+                  <input type="text" style="width: 100px;" class="text-input" onkeyup="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)" value="EZ3-India" id="textField">
+                </span>
+              </td>
+
+              <Td>Font Size
+                <span style="float:right;">
+                  <input id="FontSize" value="20" size="2">
+                </span>
+              </td>
+
+
+              <TR>
+                <TD>Font name:
+                  <span style="float:right;">
+                    <select style="width: 100px" id="SelectFont" onchange="LoadFont('../../openJScad/fonts/'+document.getElementById('SelectFont').value,document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></select>
+                  </span>
+                </td>
+
+                <TD>Charset:
+                  <span style="float:right;">
+                    <select id="SelectLang" onchange="UpdateFontList('SelectFont',document.getElementById('SelectLang').value)">
+
+                    </select>
+                  </span>
+                </td>
+
+                <Tr>
+                  <Td>Italic:
+                    <input type="range" id="Fitalic" min="-105" max="105" step="15" value="0" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)">
+                  </td>
+
+                  <Td>Narrowing:
+                    <input type="range" id="Fnarrowing" min="25" max="175" step="15" value="100" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)">
+                  </td>
+
+                  <Tr>
+                    <Td>Text height (Z axis)
+                      <span style="float:right;">
+                        <input id="TextThickness" value="6" size="2">
+                      </span>
+                    </td>
+
+                    <Td>
+                      <input type="checkbox" id="mirror">Mirror text</td>
+                    <Tr>
+                      <Td colspan=2>Preview
+
+                        <table cellspacing=0 cellpadding=0 bordercolor=0 border=1>
+                          <td bgcolor="ffffff" border=0>
+                            <canvas id="preview" width="400" height="50" class="text" style="border:0px solid #000000;"></canvas>
+                          </td>
+                        </table>
+
+                      </td>
+                    </tr>
+                    <tr>
+                      <Th colspan=2><b>Sign Background</b></th>
+
+                      <tr>
+                        <Td>Thickness
+                          <span style="float:right;">
+                            <input id="BGThickness" value="3" size="2">
+                          </span>
+                        </td>
+
+                        <Td>Pattern
+                          <span style="float:right;">
+                            <SELECT id="SelectP" value="Solid" onchange="patterndis(document.getElementById('SelectP').value=='Solid')">
+                              <option value="Solid">Solid</option>
+                              <option value="Squares">Grid Squares</option>
+                              <option value="Squares45">Grid Squares 45&deg;</option>
+                              <option value="Honeycomb">Honeycomb Grid</option>
+                            </select>
+                          </span>
+                        </td>
+
+                        <Tr>
+                          <Td>Pattern size
+                            <span style="float:right;">
+                              <input id="PatternSize" value="5" size="2">
+                            </span>
+                          </td>
+
+                          <Td>Pattern thickness
+                            <span style="float:right;">
+                              <input id="PatternThickness" value="1" size="2">
+                            </span>
+                          </td>
+
+                          <tr>
+                            <Th colspan=2><b>Margins</b></th>
+
+                            <Tr>
+                              <Td>Left margin
+                                <span style="float:right;">
+                                  <input id="LeftMargin" value="10" size="2">
+                                </span>
+                              </td>
+
+                              <Td>Right margin
+                                <span style="float:right;">
+                                  <input id="RightMargin" value="10" size="2">
+                                </span>
+                              </td>
+
+                              <tr>
+                                <Td colspan=2>Top & Bottom minimum margin
+                                  <span style="float:right;">
+                                    <input id="TopBottomMargin" value="3" size="2">
+                                  </span>
+                                </td>
+
+                                <tr>
+                                  <Th colspan=2><b>Frame</b></th>
+
+                                  <Tr>
+                                    <Td>Thickness (height)
+                                      <span style="float:right;">
+                                        <input id="FrameThickness" value="6" size="2">
+                                      </span>
+                                    </td>
+
+                                    <Td>Width
+                                      <span style="float:right;">
+                                        <input id="FrameWidth" value="2" size="2">
+                                      </span>
+                                    </td>
+
+                                    <Tr>
+                                      <Td>Corner fillet
+                                        <span style="float:right;">
+                                          <input id="Fillet" value="6" size="2">
+                                        </span>
+                                      </td>
+
+                                      <Td>Holes diameter
+                                        <span style="float:right;">
+                                          <input id="HoleD" value="2" size="2">
+                                        </span>
+                                      </td>
+
+
+
+          </table>
+
+        </div>
+
+        <div class="col-md-8">
+
+        <div id="viewer"></div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

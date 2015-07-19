@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <script src="../../page.js"></script>
+  <script src="../../openJScad/fontjscad.js"></script>
+  <script src="../../openJScad/lightgl.js"></script>
+  <script src="../../openJScad/openjscad.js"></script>
+  <script src="../../openJScad/csg.js"></script>
+  <script src="../../openJScad/opentype.js"></script>
+  <script src="../../openJScad/opentypef.js"></script>
+  <script src="letterbead.js"></script>
+  <link rel="stylesheet" type="text/css" href="../template.css">
+  <link rel="stylesheet" type="text/css" href="../../menu.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="../../assets/js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+  <link href="../../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="../table.css">
+  <script>
+    var gProcessor = null;
+
+    // Show all exceptions to the user:
+    OpenJsCad.AlertUserOfUncaughtExceptions();
+
+    function onload() {
+      gProcessor = new OpenJsCad.Processor(document.getElementById("viewer"));
+      UpdateFontList('SelectFont', 'Latin');
+      UpdateLangList('SelectLang');
+      //renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01);
+      //LoadFontUpdateSolid('../../openJScad/fonts/arial.ttf',document.getElementById('textField').value,1,0);
+
+      parametersLoaderText();
+
+    }
+
+    function updateSolid() {
+      gProcessor.setJsCad();
+    }
+
+    function shapetext(shp) {
+      if (shp == "Circle") document.getElementById('shps').innerHTML = "Diameter:";
+      if (shp == "Square") document.getElementById('shps').innerHTML = "Edge:";
+      if (shp == "Diamond") document.getElementById('shps').innerHTML = "Edge:";
+      if (shp == "Pentagon") document.getElementById('shps').innerHTML = "Width:";
+      if (shp == "HexV") document.getElementById('shps').innerHTML = "Width:";
+      if (shp == "HexH") document.getElementById('shps').innerHTML = "Height";
+      if (shp == "Octagon") document.getElementById('shps').innerHTML = "Width:";
+    }
+  </script>
+  <title>EZ-Customize</title>
+  <div id="header" style="position:relative;">
+</head>
+
+<body onload="onload()" class="pg">
+
+
+  <div class="section">
+    <div class="container" style="margin-left: 10px;width: 100%;">
+      <div class="row">
+
+        <div class="col-md-4" style="float:left;">
+
+          <!-- table here -->
+
+        <table>
+          <Th colspan=2><b>Bead Shape:</b></th>
+
+          <Tr>
+
+            <Td>Shape
+              <span style="float:right;">
+                <SELECT id="SelectP" value="Octagon" style="width: 120px;" onchange="shapetext(document.getElementById('SelectP').value)">
+                  <option value="Circle">Circle</option>
+                  <option value="Square">Square</option>
+                  <option value="Diamond">Diamond</option>
+                  <option value="Pentagon">Pentagon</option>
+                  <option value="HexV">Hexagon - vertical</option>
+                  <option value="HexH">Hexagon - horizontal</option>
+                  <option value="Octagon" selected>Octagon</option>
+
+                </select>
+              </span>
+            </td>
+
+
+            <Td>
+              <span id="shps">Diameter:</span>
+              <span style="float:right;">
+                <input id="ShapeSize" value="10" size="2">
+              </span>
+            </td>
+
+            <tr>
+              <Td colspan=2>Height:
+                <span style="float:right;">
+                  <input id="BeadH" value="5" size="2">
+                </span>
+              </td>
+
+              <tr>
+                <Td>Top Edge
+                  <span style="float:right;">
+                    <SELECT id="SelectTop" value="Cove">
+                      <option value="None">None</option>
+                      <option value="Round">Round</option>
+                      <option value="Bevel">Bevel</option>
+                      <option value="Cove" selected>Cove</option>
+
+                    </select>
+                  </span>
+                </td>
+
+
+                <Td>Size
+                  <span style="float:right;">
+                    <input type="range" id="TopEdgeSize" min="0" max="100" step="10" value="20">
+                  </span>
+                </td>
+
+                <tr>
+
+                  <Td>Bottom Edge
+                    <span style="float:right;">
+                      <SELECT id="SelectBottom" value="Bevel">
+                        <option value="None">None</option>
+                        <option value="Round">Round</option>
+                        <option value="Bevel" selected>Bevel</option>
+                        <option value="Cove">Cove</option>
+
+                      </select>
+                    </span>
+                  </td>
+
+
+                  <Td>Size
+                    <span style="float:right;">
+                      <input type="range" id="BottomEdgeSize" min="0" max="100" step="10" value="50">
+                    </span>
+                  </td>
+
+                  <tr>
+                    <Td colspan=2>Hole diameter:
+                      <span style="float:right;">
+                        <input id="HoleD" value="2" size="2">
+                      </span>
+                    </td>
+
+                    <tr>
+                      <Td colspan=2>Hole offset from the center towards the top:
+                        <span style="float:right;">
+                          <input id="HoleL" value="0" size="2">
+                        </span>
+                      </td>
+
+                      <Tr>
+                        <Th colspan=2><b>Text & Font:</b></th>
+
+                        <Tr>
+                          <Td>Text
+                            <span style="float:right;">
+                              <input type="text" class="text-input" onkeyup="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)" value="A" id="textField">
+                            </span>
+                          </td>
+
+                          <Td>Font Size
+                            <span style="float:right;">
+                              <input id="FontSize" value="7" size="2">
+                            </span>
+                          </td>
+
+
+                          <TR>
+                            <TD>Font name:
+                              <span style="float:right;">
+                                <select style="width: 100px" id="SelectFont" onchange="LoadFont('../../openJScad/fonts/'+document.getElementById('SelectFont').value,document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)"></select>
+                              </span>
+                            </td>
+
+                            <TD>Charset:
+                              <span style="float:right;">
+                                <select id="SelectLang" onchange="UpdateFontList('SelectFont',document.getElementById('SelectLang').value)">
+
+                                </select>
+                              </span>
+                            </td>
+
+
+                            <Tr>
+                              <Td>Italic:
+                                <input type="range" id="Fitalic" min="-105" max="105" step="15" value="0" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)">
+                              </td>
+
+                              <Td>Narrowing:
+                                <input type="range" id="Fnarrowing" min="25" max="175" step="15" value="100" onchange="renderText(document.getElementById('textField').value,document.getElementById('Fnarrowing').value*0.01,document.getElementById('Fitalic').value*0.01)">
+                              </td>
+
+                              <Tr>
+                                <Td colspan=2>Preview
+                                  <br>
+                                  <center>
+                                    <table cellspacing=0 cellpadding=0 bordercolor=0 border=1>
+                                      <td bgcolor="ffffff" border=0>
+                                        <canvas id="preview" width="390" height="50" class="text" style="border:0px solid #000000;"></canvas>
+                                      </td>
+                                    </table>
+                                </td>
+
+                                <Tr>
+                                  <Td>Text height
+                                    <span style="float:right;">
+                                      <input id="TextThickness" value="1" size="2">
+                                    </span>
+                                  </td>
+
+                                  <Td>
+                                    <input type="checkbox" id="mirror">Mirror text</td>
+
+
+        </table>
+
+
+
+        </div>
+
+        <div class="col-md-8">
+
+        <div id="viewer"></div>
+
+         </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
